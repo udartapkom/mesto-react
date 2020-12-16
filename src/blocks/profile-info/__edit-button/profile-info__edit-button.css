@@ -1,0 +1,20 @@
+.profile-info__edit-button {
+  background: url("../../../images/edit_button.svg");
+  min-width: 24px; /*именно так, потому что при переполнении часть кнопки вылезает за пределы блока */
+  min-height: 24px;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+}
+.profile-info__edit-button:hover {
+  opacity: 0.6;
+  transition: linear 0.3s;
+}
+@media screen and (max-width: 680px) {
+  .profile-info__edit-button {
+    background-size: 18px;
+    min-width: 18px;
+    min-height: 18px;
+  }
+}

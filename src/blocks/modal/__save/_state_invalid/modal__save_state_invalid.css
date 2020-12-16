@@ -1,0 +1,7 @@
+.modal__save_state_invalid {
+  background-color: white;
+  border: 1px solid black;
+  color: black;
+  opacity: 0.2;
+  pointer-events: none;
+}

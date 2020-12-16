@@ -1,0 +1,21 @@
+.modal__close-button {
+  position: absolute;
+  top: -41px;
+  right: -41px;
+  background: url("../../../images/close_button.svg");
+  background-size: cover;
+  width: 41px;
+  height: 41px;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+.modal__close-button:hover {
+  opacity: 0.6;
+  transition: linear 0.3s;
+}
+@media screen and (max-width: 480px) {
+  .modal__close-button {
+    right: 0;
+  }
+}

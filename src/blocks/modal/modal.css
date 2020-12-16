@@ -1,0 +1,23 @@
+@import url("__content/modal__content.css");
+@import url("__header/modal__header.css");
+@import url("__form/modal__form.css");
+@import url("__input/modal__input.css");
+@import url("__close-button/modal__close-button.css");
+@import url("__save/modal__save.css");
+@import url("__photo-signature/modal__photo-signature.css");
+@import url("__photo-zoom/modal__photo-zoom.css");
+@import url("__content-zoom/modal__content-zoom.css");
+@import url("__label/modal__label.css");
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* display: none; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: visibility 0.3s, opacity 0.3s linear;
+}

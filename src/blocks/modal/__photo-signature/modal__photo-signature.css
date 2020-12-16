@@ -1,0 +1,10 @@
+.modal__photo-signature {
+  /*max-width: 290px;*/
+  padding-top: 10px;
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 12px;
+  line-height: 125%;
+  font-weight: normal;
+  color: white;
+  margin: 0;
+}

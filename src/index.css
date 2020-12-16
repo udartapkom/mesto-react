@@ -1,13 +1,19 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
+@import url("./vendor/normalize.css");
+/* @import url("fonts/fonts.css"); */
+@import url("./blocks/body/body.css");
+@import url("./blocks/header/header.css");
+@import url("./blocks/content/content.css");
+@import url("./blocks/profile/profile.css");
+@import url("./blocks/profile-info/profile-info.css");
+@import url("./blocks/elements/elements.css");
+@import url("./blocks/cards/cards.css");
+@import url("./blocks/footer/footer.css");
+@import url("./blocks/modal/modal.css");
+@import url("./blocks/modal/_open/modal_open.css"); /* иначе не работает */
+@import url("./blocks/modal/_close/modal_close.css");
+@import url("./blocks/cards/__like/_active/cards__like_button_active.css");
+@import url("./blocks/cards/__title/_text/cards__title_text_ellipsis.css");
+@import url("./blocks/profile-info/__title/_text/profile-info__title_text_ellipsis.css");
+@import url("./blocks/modal/__input/_type_error/modal__input_type_error.css");
+@import url("./blocks/modal/__save/_state_invalid/modal__save_state_invalid.css");
+@import url("./blocks/modal/_error_visible/modal__error_visible.css");

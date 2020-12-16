@@ -1,0 +1,9 @@
+.cards__likes-quantity {
+  font-family: "Inter", Arial, sans-serif;
+  color: black;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 123%;
+  text-align: center;
+  margin: 0;
+}

@@ -1,0 +1,6 @@
+.modal_close {
+  opacity: 0;
+  visibility: hidden;
+
+  transition: visibility 0.3s, opacity 0.3s linear;
+}

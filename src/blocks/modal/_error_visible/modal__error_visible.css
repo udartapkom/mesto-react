@@ -1,0 +1,12 @@
+.modal__error_visible {
+  font-family: "Inter", Arial, sans-serif;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 125%;
+  color: red;
+  position: absolute;
+  top: auto;
+  left: 0;
+  padding-top: 20px;
+  padding-left: 36px;
+}

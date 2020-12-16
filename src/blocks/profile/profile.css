@@ -1,0 +1,21 @@
+@import url("__avatar/profile__avatar.css");
+@import url("__add-button/profile__add-button.css");
+@import url("__pensil/profile__pensil.css");
+.profile {
+  display: flex;
+  align-items: center;
+  max-width: 880px;
+  padding-top: 40px;
+  margin: 0 auto;
+}
+@media screen and (max-width: 890px) {
+  .profile {
+    max-width: 680px;
+  }
+}
+@media screen and (max-width: 680px) {
+  .profile {
+    flex-direction: column;
+    max-width: 580px;
+  }
+}

@@ -1,0 +1,15 @@
+.modal__input {
+  font-family: "Inter", Arial, sans-serif;
+  max-width: 358px;
+  margin-left: 36px;
+  margin-right: 36px;
+  margin-bottom: 30px;
+  outline: none;
+  border-top-style: none;
+  border-right-style: none;
+  border-left-style: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+.modal__input:last-of-type {
+  margin-bottom: 48px;
+}

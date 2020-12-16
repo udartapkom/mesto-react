@@ -1,0 +1,18 @@
+@import url("__photo/cards__photo.css");
+@import url("__title/cards__title.css");
+@import url("__title-style/cards__title-style.css");
+@import url("__like/cards__like.css");
+@import url("__list/cards__list.css");
+@import url("__trash/cards__trash.css");
+@import url("__likes-data/cards__likes-data.css");
+@import url("__likes-quantity/cards__likes-quantity.css");
+@import url("__trash/_show/cards__trash_show.css");
+.cards {
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  background: #ffffff;
+  border-radius: 10px;
+  overflow: hidden;
+  justify-content: space-between;
+}

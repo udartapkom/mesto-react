@@ -1,0 +1,21 @@
+.modal__save {
+  max-width: 358px;
+  height: 50px;
+  background-color: black;
+  border-radius: 2px;
+  margin-left: 36px;
+  margin-right: 36px;
+  margin-bottom: 36px;
+  cursor: pointer;
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 18px;
+  line-height: 122%;
+  font-weight: normal;
+  text-align: center;
+  color: white;
+  border: none;
+}
+.modal__save:hover {
+  background: rgba(0, 0, 0, 0.8);
+  transition: linear 0.3s;
+}

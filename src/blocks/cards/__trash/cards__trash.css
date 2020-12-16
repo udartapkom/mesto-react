@@ -1,0 +1,22 @@
+.cards__trash {
+  width: 18px;
+  height: 19px;
+  background: url("../../../images/trash.svg");
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  background-size: contain;
+  align-self: flex-end;
+  margin-top: 18px;
+  padding-right: 15px;
+  padding-left: 18px;
+  position: absolute;
+  /* display: none; */
+}
+.cards__trash:hover {
+  opacity: 0.6;
+  transition: linear 0.3s;
+}
+.cards__trash:focus {
+  outline: none;
+}

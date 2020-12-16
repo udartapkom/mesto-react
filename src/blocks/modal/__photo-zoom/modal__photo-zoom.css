@@ -1,0 +1,10 @@
+.modal__photo-zoom {
+  max-width: 75vw;
+  max-height: 75vh;
+}
+@media screen and (max-width: 320px) {
+  .modal__photo-zoom {
+    width: 240px;
+    height: 300px;
+  }
+}

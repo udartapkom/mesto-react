@@ -1,0 +1,26 @@
+.profile__avatar {
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+  height: 120px;
+  width: 120px;
+  /* background: url("../../../images/kusto.jpg"); */
+  background-repeat: no-repeat;
+  background-size: cover;
+  outline: none;
+  border: none;
+}
+.profile__avatar:hover:after {
+  content: "";
+  display: block;
+  position: absolute;
+  background: rgba(0, 0, 0, 0.8);
+  background-image: url("../../../images/pensil.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0.8;
+}
