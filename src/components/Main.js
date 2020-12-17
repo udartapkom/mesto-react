@@ -12,7 +12,7 @@ function Main(props) {
     cards,
     onCardClick,
   } = props;
-  //console.log(props);
+
   return (
     <>
       <main className="content root__section">

@@ -43,12 +43,13 @@ function App() {
   }
   // Установка данных о пользователе
   React.useEffect(() => {
-    api
-      .getProfileInfo()
-      .then((userInfo) => {
+    Promise.all([api.getProfileInfo(), api.getCards()])
+
+      .then(([userInfo, cardsArray]) => {
         setUserName(userInfo.name); //устанавливаем начальные значения профиля
         setUseruserDescription(userInfo.about);
         setAvatar(userInfo.avatar); //устанавливаем аватар
+        setCards(cardsArray); // получение карточек
       })
       .catch((error) => {
         alert(error);
@@ -56,17 +57,18 @@ function App() {
   }, []);
 
   // получение карточек
-  React.useEffect(() => {
+  /*  React.useEffect(() => {
     api
       .getCards()
       .then((cardsArray) => {
+        console.log(cardsArray);
         setCards(cardsArray);
       })
       .catch((error) => {
         alert(error);
       });
   }, []);
-
+ */
   // Закрытие модалок
   function closeAllPopups() {
     //возвращаем состояние false
@@ -111,23 +113,17 @@ function App() {
         onClose={closeAllPopups}
         closePopupForm={closePopupForm}
         children={
-          <form
-            name="profile-edit"
-            action="#"
-            className="modal__form"
-            novalidate
-          >
-            <label class="modal__label">
+          <>
+            <label className="modal__label">
               <input
                 name="name"
                 type="text"
-                required
-                value=""
+                required /* value="" */ // нужно использовать с onChange, но его пока нет! Или со значение по умолчанию
                 placeholder="Введите имя"
                 className="modal__input modal__input_name"
-                minlength="2"
-                maxlength="40"
-                autocomplete="off"
+                minLength="2"
+                maxLength="40"
+                autoComplete="off"
               />
               <span className="modal__error_visible" id="name-error"></span>
             </label>
@@ -136,62 +132,54 @@ function App() {
                 name="profession"
                 type="text"
                 required
-                value=""
-                placeholder="Введите профессию"
+                placeholder="Введите профессию" /* value="" */ // нужно использовать с onChange, но его пока нет! Или со значение по умолчанию
                 className="modal__input modal__input_profession"
-                minlength="2"
-                maxlength="200"
-                autocomplete="off"
+                minLength="2"
+                maxLength="200"
+                autoComplete="off"
               />
               <span
                 className="modal__error_visible"
                 id="profession-error"
               ></span>
             </label>
-            <button type="submit" className="modal__save">
-              Сохранить
-            </button>
-          </form>
+          </>
         }
       />
 
       <PopupWithForm
         title="Новое место"
-        name="avatar"
+        name="add-card"
         isOpen={isAddPlacePopupOpen}
         onClose={closeAllPopups}
         closePopupForm={closePopupForm}
         children={
-          <form
-            name="profile-place"
-            action="#"
-            className="modal__form"
-            novalidate
-          >
+          <>
             <label className="modal__label">
               <input
                 name="placeName"
                 type="text"
-                required
-                value=""
+                required /* value="" */ // нужно использовать с onChange, но его пока нет! Или со значение по умолчанию
                 placeholder="Название"
                 className="modal__input modal__input_name"
-                minlength="1"
-                maxlength="30"
-                autocomplete="off"
+                minLength="1"
+                maxLength="30"
+                autoComplete="off"
               />
-              <span class="modal__error_visible" id="placeName-error"></span>
+              <span
+                className="modal__error_visible"
+                id="placeName-error"
+              ></span>
             </label>
 
             <label className="modal__label">
               <input
                 name="placeLink"
                 type="url"
-                required
-                value=""
+                required /* value="" */ // нужно использовать с onChange, но его пока нет! Или со значение по умолчанию
                 placeholder="Ссылка на картинку"
                 className="modal__input modal__input_profession"
-                autocomplete="off"
+                autoComplete="off"
               />
 
               <span
@@ -199,11 +187,7 @@ function App() {
                 id="placeLink-error"
               ></span>
             </label>
-
-            <button type="submit" className="modal__save" disabled>
-              Сохранить
-            </button>
-          </form>
+          </>
         }
       />
       <PopupWithForm
@@ -213,26 +197,22 @@ function App() {
         onClose={closeAllPopups}
         closePopupForm={closePopupForm}
         children={
-          <form name="profile-avatar" action="#" class="modal__form" novalidate>
+          <>
             <label className="modal__label">
               <input
                 name="placeLink"
                 type="url"
-                required
-                value=""
+                required /* value="" */ // нужно использовать с onChange, но его пока нет! Или со значение по умолчанию
                 placeholder="Ссылка на аватар"
                 className="modal__input modal__input_profession"
-                autocomplete="off"
+                autoComplete="off"
               />
               <span
                 className="modal__error_visible"
                 id="placeLink-error"
               ></span>
             </label>
-            <button type="submit" className="modal__save" disabled>
-              Сохранить
-            </button>
-          </form>
+          </>
         }
       />
       <ImagePopup

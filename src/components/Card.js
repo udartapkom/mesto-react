@@ -2,7 +2,6 @@ import React from "react";
 
 function Card(props) {
   const { card } = props;
-
   function handleClick() {
     props.onCardClick(card);
   }
@@ -11,7 +10,9 @@ function Card(props) {
     <div className="cards">
       <button
         type="button"
-        className="cards__trash"
+        className={`cards__trash ${
+          card._id === card.owner_id ? "cards__trash_show" : null
+        } `} // чтобы поставить корзинку только для карточек, которые добавил сам
         aria-label="Удалить"
       ></button>
       <img
