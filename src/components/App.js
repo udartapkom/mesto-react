@@ -56,19 +56,6 @@ function App() {
       });
   }, []);
 
-  // получение карточек
-  /*  React.useEffect(() => {
-    api
-      .getCards()
-      .then((cardsArray) => {
-        console.log(cardsArray);
-        setCards(cardsArray);
-      })
-      .catch((error) => {
-        alert(error);
-      });
-  }, []);
- */
   // Закрытие модалок
   function closeAllPopups() {
     //возвращаем состояние false
@@ -81,15 +68,24 @@ function App() {
       name: "",
     });
   }
-
   // Закрытие модалки с формой. Клик в любом месте
-  function closePopupForm() {
-    closeAllPopups();
+  function closePopupForm(event) {
+    if (
+      event.target.classList.contains("modal") &&
+      event.target.classList.contains("modal_open")
+    ) {
+      closeAllPopups();
+    }
   }
 
   // Закрытие модалки с картинкой. Клик в любом месте
-  function closeImagePopup() {
-    closeAllPopups();
+  function closeImagePopup(event) {
+    if (
+      event.target.classList.contains("modal") &&
+      event.target.classList.contains("modal_open")
+    ) {
+      closeAllPopups();
+    }
   }
 
   return (

@@ -1,6 +1,5 @@
 import React from "react";
 import Card from "./Card";
-
 function Main(props) {
   const {
     onEditProfile,
@@ -12,7 +11,6 @@ function Main(props) {
     cards,
     onCardClick,
   } = props;
-
   return (
     <>
       <main className="content root__section">
