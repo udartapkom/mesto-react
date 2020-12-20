@@ -1,5 +1,13 @@
 function PopupWithForm(props) {
-  const { isOpen, onClose, title, name, closePopupForm, children } = props;
+  const {
+    isOpen,
+    onClose,
+    title,
+    name,
+    closePopupForm,
+    children,
+    onSubmit,
+  } = props;
   return (
     <div
       onClick={closePopupForm}
@@ -15,7 +23,13 @@ function PopupWithForm(props) {
           onClick={onClose}
         ></button>
         <h2 className="modal__header">{title}</h2>
-        <form name={name} action="#" className="modal__form" noValidate>
+        <form
+          name={name}
+          action="#"
+          className="modal__form"
+          noValidate
+          onSubmit={onSubmit}
+        >
           {children}
           <button type="submit" className="modal__save">
             Сохранить

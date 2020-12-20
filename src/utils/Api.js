@@ -94,6 +94,44 @@ class Api {
     });
   }
 
+  changeLikeCardStatus(cardId, isLiked) {
+    if (isLiked) {
+      return fetch(
+        `${this._serverUrl}/v1/${this._cohort}/cards/likes/${cardId}`,
+        {
+          method: "PUT",
+          headers: {
+            authorization: this._token,
+          },
+        }
+      ).then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+        return Promise.reject(
+          `Ошибка! Лайк не поставлен: ${res.status}, ${res.statusText}`
+        );
+      });
+    } else {
+      return fetch(
+        `${this._serverUrl}/v1/${this._cohort}/cards/likes/${cardId}`,
+        {
+          method: "DELETE",
+          headers: {
+            authorization: this._token,
+          },
+        }
+      ).then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+        return Promise.reject(
+          `Ошибка! Лайк не снят: ${res.status}, ${res.statusText}`
+        );
+      });
+    }
+  }
+  /*  Пришлось пересоздать методы установки и снятия лайков
   setLikes(cardId) {
     return fetch(
       `${this._serverUrl}/v1/${this._cohort}/cards/likes/${cardId}`,
@@ -111,8 +149,8 @@ class Api {
         `Ошибка! Лайк не поставлен: ${res.status}, ${res.statusText}`
       );
     });
-  }
-
+  } */
+  /* 
   delLikes(cardId) {
     return fetch(
       `${this._serverUrl}/v1/${this._cohort}/cards/likes/${cardId}`,
@@ -130,8 +168,9 @@ class Api {
         `Ошибка! Лайк не снят: ${res.status}, ${res.statusText}`
       );
     });
-  }
+  } */
   setAvatar(avatarURL) {
+    console.log(avatarURL.avatar);
     return fetch(`${this._serverUrl}/v1/${this._cohort}/users/me/avatar`, {
       method: "PATCH",
       headers: {
@@ -139,7 +178,7 @@ class Api {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        avatar: `${avatarURL}`,
+        avatar: `${avatarURL.avatar}`,
       }),
     }).then((res) => {
       if (res.ok) {
