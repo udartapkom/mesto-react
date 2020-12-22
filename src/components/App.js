@@ -3,7 +3,7 @@ import Header from "./Header";
 import Main from "./Main";
 import Footer from "./Footer";
 //import PopupWithForm from "./PopupWithForm";  // этот импорт уже не используется
-import api from "../utils/Api";
+import api from "../utils/api";
 import ImagePopup from "./ImagePopup";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import EditProfilePopup from "./EditProfilePopup";
@@ -12,11 +12,11 @@ import AddPlacePopup from "./AddPlacePopup";
 
 function App() {
   //хуки состояния модалок
-  const [isEditProfilePopupOpen, setisEditProfilePopupOpen] = React.useState(
+  const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(
     false
   );
-  const [isAddPlacePopupOpen, setisAddPlacePopupOpen] = React.useState(false);
-  const [isEditAvatarPopupOpen, setisEditAvatarPopupOpen] = React.useState(
+  const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false);
+  const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(
     false
   );
   const [cards, setCards] = React.useState([]);
@@ -29,15 +29,15 @@ function App() {
 
   // функции меняющие состояния открытия модалок
   function handleEditProfileClick() {
-    setisEditProfilePopupOpen(!isEditProfilePopupOpen); //инвертируем состояние
+    setIsEditProfilePopupOpen(!isEditProfilePopupOpen); //инвертируем состояние
   }
 
   function handleAddPlaceClick() {
-    setisAddPlacePopupOpen(!isAddPlacePopupOpen); //инвертируем состояние
+    setIsAddPlacePopupOpen(!isAddPlacePopupOpen); //инвертируем состояние
   }
 
   function handleEditAvatarClick() {
-    setisEditAvatarPopupOpen(!isEditAvatarPopupOpen); //инвертируем состояние
+    setIsEditAvatarPopupOpen(!isEditAvatarPopupOpen); //инвертируем состояние
   }
 
   function handleCardClick(card) {
@@ -53,14 +53,19 @@ function App() {
     );
 
     // Отправляем запрос в API и получаем обновлённые данные карточки
-    api.changeLikeCardStatus(card.card._id, !isLiked).then((newCard) => {
-      // Формируем новый массив на основе имеющегося, подставляя в него новую карточку
-      const newCards = cards.map((c) =>
-        c._id === card.card._id ? newCard : c
-      );
-      // Обновляем стейт
-      setCards(newCards);
-    });
+    api
+      .changeLikeCardStatus(card.card._id, !isLiked)
+      .then((newCard) => {
+        // Формируем новый массив на основе имеющегося, подставляя в него новую карточку
+        const newCards = cards.map((c) =>
+          c._id === card.card._id ? newCard : c
+        );
+        // Обновляем стейт
+        setCards(newCards);
+      })
+      .catch((error) => {
+        alert(error);
+      });
   }
   //удаление карточки с сервера
   function handleCardDelete(cardToDelete) {
@@ -138,27 +143,17 @@ function App() {
   // Закрытие модалок
   function closeAllPopups() {
     //возвращаем состояние false
-    setisEditProfilePopupOpen(false);
-    setisAddPlacePopupOpen(false);
-    setisEditAvatarPopupOpen(false);
+    setIsEditProfilePopupOpen(false);
+    setIsAddPlacePopupOpen(false);
+    setIsEditAvatarPopupOpen(false);
     setSelectedCard({
       isImageOpen: false,
       link: "",
       name: "",
     });
   }
-  // Закрытие модалки с формой. Клик в любом месте
-  function closePopupForm(event) {
-    if (
-      event.target.classList.contains("modal") &&
-      event.target.classList.contains("modal_open")
-    ) {
-      closeAllPopups();
-    }
-  }
-
-  // Закрытие модалки с картинкой. Клик в любом месте
-  function closeImagePopup(event) {
+  // Закрытие модалки с формой или картинкой. Клик в любом месте
+  function closeByOverlayClick(event) {
     if (
       event.target.classList.contains("modal") &&
       event.target.classList.contains("modal_open")
@@ -184,21 +179,21 @@ function App() {
         <EditProfilePopup
           isOpen={isEditProfilePopupOpen}
           onClose={closeAllPopups}
-          closePopupForm={closePopupForm}
+          closePopupForm={closeByOverlayClick}
           onUpdateUser={handleUpdateUser}
         />
 
         <AddPlacePopup
           isOpen={isAddPlacePopupOpen}
           onClose={closeAllPopups}
-          closePopupForm={closePopupForm}
+          closePopupForm={closeByOverlayClick}
           onAddPlace={handleAddPlaceSubmit}
         />
 
         <EditAvatarPopup
           isOpen={isEditAvatarPopupOpen}
           onClose={closeAllPopups}
-          closePopupForm={closePopupForm}
+          closePopupForm={closeByOverlayClick}
           onUpdateAvatar={handleUpdateAvatar}
         />
 
@@ -207,7 +202,7 @@ function App() {
           link={selectedCard.link}
           onClose={closeAllPopups}
           isOpen={selectedCard.isImageOpen}
-          closeImagePopup={closeImagePopup}
+          closeImagePopup={closeByOverlayClick}
         />
         <Footer />
       </div>

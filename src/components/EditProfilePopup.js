@@ -4,8 +4,8 @@ import PopupWithForm from "./PopupWithForm";
 
 function EditProfilePopup(props) {
   const currentUser = React.useContext(CurrentUserContext);
-  const [name, setName] = React.useState({});
-  const [description, setDescription] = React.useState({});
+  const [name, setName] = React.useState("");
+  const [description, setDescription] = React.useState("");
 
   const { isOpen, onClose, onUpdateUser, closePopupForm } = props;
 
@@ -45,7 +45,7 @@ function EditProfilePopup(props) {
               name="name"
               type="text"
               required
-              value={name || ""} //  || '' - иначе "warning!" в консоли о том, что Компонент изменяет контролируемый вход на неконтролируемый...
+              value={name || ""} //  || '' проверяем name - иначе "warning!" в консоли о том, что Компонент изменяет контролируемый ввод на неконтролируемый...
               placeholder="Введите имя"
               className="modal__input modal__input_name"
               minLength="2"
